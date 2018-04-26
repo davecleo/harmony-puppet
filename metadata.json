@@ -4,7 +4,7 @@
   "author": "dbrunswick",
   "summary": "Install and configure Cleo Harmony",
   "license": "Apache-2.0",
-  "source": "",
+  "source": "https://github.com/davecleo/harmony-puppet.git",
   "dependencies": [
 
   ],
