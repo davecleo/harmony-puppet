@@ -5,9 +5,9 @@ class harmony::param {
     $s3_bucket          = 'https://cleo-installers.s3-us-west-2.amazonaws.com'
     $installer_name     = 'Harmony.bin'
     $dashboard_installer= 'Dashboard.bin'
-    $base_version       = '5.4'
-    $patch_base         = '5.4.1'
-    $patch_no           = '1.10'
+    $base_version       = '5.5'
+    $patch_base         = '5.5'
+    $patch_no           = ''
 
     $cluster            = false
     $cluster_ip         = ''

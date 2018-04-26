@@ -97,7 +97,7 @@ class harmony::install {
 
             if $harmony::database_name == 'postgres' {
                 class {'postgresql::server': 
-                    postgres_password => 'extol',
+                    postgres_password => $harmony::database_password,
                 }
             } else {
                 class {'postgresql::server': 
