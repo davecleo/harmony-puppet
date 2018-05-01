@@ -1,3 +1,10 @@
+# harmony::dashboard
+#
+# This class installs and configures harmony dashboards
+#
+# @example Declaring the class
+#   include harmony::dashboard
+#
 class harmony::dashboard {
     $db_type = $harmony::database_type ? {
         'postgres' => 'postgresql',
