@@ -18,51 +18,43 @@ class harmony::config {
                     require => File['shell tool'],
         }
         $db_string = "${db_type}:${harmony::database_user}:${harmony::database_password}@${harmony::database_host}:${harmony::database_port}/${harmony::database_name}"
-            $basic_setup = @("END")
-shell.sh << EOF 
-db set ${db_string}
-xferlog ${db_string}
-set '' replicatelogevents true
-opts Users.xml Users/Usergroup[Administrators]/Vlpoolaccess=mySystem \
-Users/Applications/Dbconnection=${db_string}
-import key SERVER ${harmony::tmp_dir}/server_key.pem ${harmony::tmp_dir}/server_cert.pem cleo
-import key SIGN ${harmony::tmp_dir}/sign_key.pem ${harmony::tmp_dir}/sign_cert.pem cleo
-import key ENCRYPT ${harmony::tmp_dir}/encrypt_key.pem ${harmony::tmp_dir}/encrypt_cert.pem cleo
-scheduler autostart on
-set "Local Listener" Ftpisselected        True
-set "Local Listener" Ftpport                   ${harmony::ftp_port}
-set "Local Listener" Ftpsauthisselected        True
-set "Local Listener" Ftpsauthport              ${harmony::ftps_port}
-set "Local Listener" Ftpsexplicitauthrequiredisselected False
-set "Local Listener" advanced.FTPUTF8Pathnames true
-set "Local Listener" Sslftpservercertalias     SERVER
-set "Local Listener" Sslftpservercertpassword  cleo
-set "Local Listener" Httpisselected            True
-set "Local Listener" Httpsisselected           True
-set "Local Listener" Httpport                  ${harmony::http_port}
-set "Local Listener" Httpsport                 ${harmony::https_port}
-set "Local Listener" Sslservercertalias        SERVER
-set "Local Listener" Sslservercertpassword     cleo
-set "Local Listener" Sshftpisselected          True
-set "Local Listener" Sshftpport                ${harmony::sftp_port}
-set "Local Listener" Sshftpservercertalias     SERVER
-set "Local Listener" Sshftpservercertpassword  cleo
-set "Local Listener" localsigncertalias        SIGN
-set "Local Listener" localsigncertpassword     cleo
-set "Local Listener" localencrcertalias        ENCRYPT
-set "Local Listener" localencrcertpassword     cleo
-set "Web Browser::Local Listener" Trustresourceenabled             True
-set "Web Browser::Local Listener" Trustresourcepath                /Trust
-set "Web Browser::Local Listener" Unifyresourceenabled             True
-set "Web Browser::Local Listener" Unifyresourcepath                /Unify
-save "Local Listener"
-opts VLApplicationNum\(Application='Operator Audit Trail'\) IsEnabled=1
-opts VLApplicationNum\(Application=Unify\)            IsEnabled=1
-opts VLApplicationNum\(Application=Trust\)            IsEnabled=1
-opts VLUnifyOptions fileRepository=${harmony::install_dir}/repo/unify senderEmailAddress=no-reply@${harmony::email_domain} repositorySize=50000 repositoryOverflowSize=0
-opts VLTrustOptions fileRepository=${harmony::install_dir}/repo/trust senderEmailAddress=no-reply@${harmony::email_domain} repositorySize=50000 repositoryOverflowSize=0
-EOF
-END
+        $basic_setup = @("END")
+                shell.sh << EOF 
+                db set ${db_string}
+                xferlog ${db_string}
+                set '' replicatelogevents true
+                opts Users.xml Users/Usergroup[Administrators]/Vlpoolaccess=mySystem \
+                Users/Applications/Dbconnection=${db_string}
+                import key SERVER ${harmony::tmp_dir}/server_key.pem ${harmony::tmp_dir}/server_cert.pem cleo
+                import key SIGN ${harmony::tmp_dir}/sign_key.pem ${harmony::tmp_dir}/sign_cert.pem cleo
+                import key ENCRYPT ${harmony::tmp_dir}/encrypt_key.pem ${harmony::tmp_dir}/encrypt_cert.pem cleo
+                scheduler autostart on
+                set "Local Listener" Ftpisselected        True
+                set "Local Listener" Ftpport                   ${harmony::ftp_port}
+                set "Local Listener" Ftpsauthisselected        True
+                set "Local Listener" Ftpsauthport              ${harmony::ftps_port}
+                set "Local Listener" Ftpsexplicitauthrequiredisselected False
+                set "Local Listener" advanced.FTPUTF8Pathnames true
+                set "Local Listener" Sslftpservercertalias     SERVER
+                set "Local Listener" Sslftpservercertpassword  cleo
+                set "Local Listener" Httpisselected            True
+                set "Local Listener" Httpsisselected           True
+                set "Local Listener" Httpport                  ${harmony::http_port}
+                set "Local Listener" Httpsport                 ${harmony::https_port}
+                set "Local Listener" Sslservercertalias        SERVER
+                set "Local Listener" Sslservercertpassword     cleo
+                set "Local Listener" Sshftpisselected          True
+                set "Local Listener" Sshftpport                ${harmony::sftp_port}
+                set "Local Listener" Sshftpservercertalias     SERVER
+                set "Local Listener" Sshftpservercertpassword  cleo
+                set "Local Listener" localsigncertalias        SIGN
+                set "Local Listener" localsigncertpassword     cleo
+                set "Local Listener" localencrcertalias        ENCRYPT
+                set "Local Listener" localencrcertpassword     cleo
+                save "Local Listener"
+                opts VLApplicationNum\(Application='Operator Audit Trail'\) IsEnabled=1
+                EOF
+                | END
 
             exec {'create_base_cert':
                 command => "openssl req -x509 -subj '/C=US/CN=Harmony' -newkey rsa:2048 -keyout server_key.pem -out server_cert.pem -days 365 -passout pass:'cleo'",
@@ -97,7 +89,6 @@ END
             require => Exec['set up harmony'],
             command => 'service cleod restart',
         }
-
     }
 
     if ($harmony::import_file != '') and ($harmony::import_password != '') {

@@ -27,8 +27,6 @@
 # @param http_port  http port to listen on (if do_initial_config is selected)
 # @param https_port  https port to listen on (if do_initial_config is selected)
 # @param sftp_port  sftp port to listen on (if do_initial_config is selected)
-# @param enable_trust   enable trust application (legacy installs only)
-# @param enable_unify   enable unify application (legacy installs only)
 # @param import_file    configuration file to import (if needed)
 # @param import_password    password for import configuration file
 # @param cert_password  password for certificates in import configuration file (assumed to be all the same)
@@ -67,8 +65,6 @@ class harmony (
     Integer $http_port                                  = $::harmony::param::http_port,
     Integer $https_port                                 = $::harmony::param::https_port,
     Integer $sftp_port                                  = $::harmony::param::sftp_port,
-    Boolean $enable_trust                       = $::harmony::param::enable_trust,
-    Boolean $enable_unify                       = $::harmony::param::enable_unify,
     String $import_file                         = $::harmony::param::import_file,
     String $import_password                     = $::harmony::param::import_password,
     String $cert_password                       = $::harmony::param::cert_password,
