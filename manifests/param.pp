@@ -25,7 +25,7 @@ class harmony::param {
     $database_port      = '5432'
     $database_host      = 'localhost'
     $database_password  = 'extol'
-    $manage_database    = false
+    $manage_database    = true
     
     $email_domain   	= 'cleotest.com'
 
@@ -35,9 +35,6 @@ class harmony::param {
     $https_port         = 5443
     $sftp_port          = 10022
     
-    $enable_trust       = true
-    $enable_unify       = true
-
     $import_file        = ''
     $import_password    = ''
     $cert_password      = ''
