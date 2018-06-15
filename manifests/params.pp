@@ -1,3 +1,10 @@
+# harmony::param
+#
+# Paramater defaults for the harmony class
+#
+# @summary This class contains all the default parameter values for the harmony class
+# @example basic usage
+#   Not used directly, but part of the Harmony module
 class harmony::param {
     $shared_directory   = '/home/harmony/local/root'
     $install_dir        = '/home/harmony'
@@ -7,7 +14,7 @@ class harmony::param {
     $dashboard_installer= 'Dashboard.bin'
     $base_version       = '5.5'
     $patch_base         = '5.5'
-    $patch_no           = ''
+    $patch_no           = '0.1'
 
     $cluster            = false
     $cluster_ip         = ''

@@ -47,7 +47,6 @@ class harmony::dashboard {
     ensure => 'running',
     require => [ Exec['install dashboard service'],
              File['dashboard license'],
-             File['dashboard auth'],
         ],
     } 
 }

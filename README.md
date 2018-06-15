@@ -5,7 +5,7 @@
 * [`harmony::config`](#harmonyconfig): 
 * [`harmony::dashboard`](#harmonydashboard): harmony::dashboard  This class installs and configures harmony dashboards
 * [`harmony::install`](#harmonyinstall): 
-* [`harmony::param`](#harmonyparam): 
+* [`harmony::param`](#harmonyparam): This class contains all the default parameter values for the harmony class
 * [`harmony::service`](#harmonyservice): 
 ## Classes
 
@@ -202,22 +202,6 @@ sftp port to listen on (if do_initial_config is selected)
 
 Default value: $::harmony::param::sftp_port
 
-##### `enable_trust`
-
-Data type: `Boolean`
-
-enable trust application (legacy installs only)
-
-Default value: $::harmony::param::enable_trust
-
-##### `enable_unify`
-
-Data type: `Boolean`
-
-enable unify application (legacy installs only)
-
-Default value: $::harmony::param::enable_unify
-
 ##### `import_file`
 
 Data type: `String`
@@ -364,7 +348,15 @@ The harmony::install class.
 
 ### harmony::param
 
-The harmony::param class.
+harmony::param
+
+Paramater defaults for the harmony class
+
+#### Examples
+##### basic usage
+```puppet
+Not used directly, but part of the Harmony module
+```
 
 
 ### harmony::service
