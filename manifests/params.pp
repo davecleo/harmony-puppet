@@ -1,11 +1,11 @@
-# harmony::param
+# harmony::params
 #
 # Paramater defaults for the harmony class
 #
 # @summary This class contains all the default parameter values for the harmony class
 # @example basic usage
 #   Not used directly, but part of the Harmony module
-class harmony::param {
+class harmony::params {
     $shared_directory   = '/home/harmony/local/root'
     $install_dir        = '/home/harmony'
     $download_url       = 'http://www.cleo.com/SoftwareUpdate/harmony/release/jre1.8/InstData/Linux(64-bit)/VM/install.bin'
