@@ -5,7 +5,7 @@
 * [`harmony::config`](#harmonyconfig): 
 * [`harmony::dashboard`](#harmonydashboard): harmony::dashboard  This class installs and configures harmony dashboards
 * [`harmony::install`](#harmonyinstall): 
-* [`harmony::param`](#harmonyparam): This class contains all the default parameter values for the harmony class
+* [`harmony::params`](#harmonyparams): This class contains all the default parameter values for the harmony class
 * [`harmony::service`](#harmonyservice): 
 ## Classes
 
@@ -30,215 +30,215 @@ The following parameters are available in the `harmony` class.
 
 Data type: `String`
 
-The location of the directory used for user files. This is particularly important for cluster installs.
 
-Default value: $::harmony::param::shared_directory
+
+Default value: $::harmony::params::shared_directory
 
 ##### `install_dir`
 
 Data type: `String`
 
-The directory in which to install Harmony
 
-Default value: $::harmony::param::install_dir
+
+Default value: $::harmony::params::install_dir
 
 ##### `user`
 
 Data type: `String`
 
-The user under which the installer should be run
 
-Default value: $::harmony::param::user
+
+Default value: $::harmony::params::user
 
 ##### `group`
 
 Data type: `String`
 
-The name of the group to create, and associate the user with if manage_user is selected
 
-Default value: $::harmony::param::group
+
+Default value: $::harmony::params::group
 
 ##### `group_gid`
 
 Data type: `String`
 
-The id of the group to create if manage_user is selected
 
-Default value: $::harmony::param::group_gid
+
+Default value: $::harmony::params::group_gid
 
 ##### `license_file`
 
 Data type: `String`
 
-The full path and filename of the license_key.txt file to use for licensing
 
-Default value: $::harmony::param::license_file
+
+Default value: $::harmony::params::license_file
 
 ##### `manage_user`
 
 Data type: `Boolean`
 
-Set to true in order to create the user under which Harmony will be installed
 
-Default value: $::harmony::param::manage_user
+
+Default value: $::harmony::params::manage_user
 
 ##### `database_type`
 
 Data type: `Enum['postgres', 'mysql']`
 
-Type of database to use
 
-Default value: $::harmony::param::database_type
+
+Default value: $::harmony::params::database_type
 
 ##### `database_host`
 
 Data type: `String`
 
-Hostname for the database to connect to
 
-Default value: $::harmony::param::database_host
+
+Default value: $::harmony::params::database_host
 
 ##### `database_name`
 
 Data type: `String`
 
-Name of the database to connect to
 
-Default value: $::harmony::param::database_name
+
+Default value: $::harmony::params::database_name
 
 ##### `database_user`
 
 Data type: `String`
 
-User to use in order to connect to the database
 
-Default value: $::harmony::param::database_user
+
+Default value: $::harmony::params::database_user
 
 ##### `database_password`
 
 Data type: `String`
 
-Password for connecting to the database
 
-Default value: $::harmony::param::database_password
+
+Default value: $::harmony::params::database_password
 
 ##### `manage_database`
 
 Data type: `Boolean`
 
-Set to true if you also want puppet to install the underlying database
 
-Default value: $::harmony::param::manage_database
+
+Default value: $::harmony::params::manage_database
 
 ##### `download_url`
 
 Data type: `String`
 
-The URL to download the harmony installer from (including filename)
 
-Default value: $::harmony::param::download_url
+
+Default value: $::harmony::params::download_url
 
 ##### `patch_base`
 
 Data type: `String`
 
-The base name for the patch to install
 
-Default value: $::harmony::param::patch_base
+
+Default value: $::harmony::params::patch_base
 
 ##### `patch_no`
 
 Data type: `String`
 
-The patch number for the patch to install
 
-Default value: $::harmony::param::patch_no
+
+Default value: $::harmony::params::patch_no
 
 ##### `base_version`
 
 Data type: `String`
 
-The base Harmony version being installed
 
-Default value: $::harmony::param::base_version
+
+Default value: $::harmony::params::base_version
 
 ##### `ftp_port`
 
 Data type: `Integer`
 
-ftp port to listen on (if do_initial_config is selected)
 
-Default value: $::harmony::param::ftp_port
+
+Default value: $::harmony::params::ftp_port
 
 ##### `ftps_port`
 
 Data type: `Integer`
 
-ftps port to listen on (if do_initial_config is selected)
 
-Default value: $::harmony::param::ftps_port
+
+Default value: $::harmony::params::ftps_port
 
 ##### `http_port`
 
 Data type: `Integer`
 
-http port to listen on (if do_initial_config is selected)
 
-Default value: $::harmony::param::http_port
+
+Default value: $::harmony::params::http_port
 
 ##### `https_port`
 
 Data type: `Integer`
 
-https port to listen on (if do_initial_config is selected)
 
-Default value: $::harmony::param::https_port
+
+Default value: $::harmony::params::https_port
 
 ##### `sftp_port`
 
 Data type: `Integer`
 
-sftp port to listen on (if do_initial_config is selected)
 
-Default value: $::harmony::param::sftp_port
+
+Default value: $::harmony::params::sftp_port
 
 ##### `import_file`
 
 Data type: `String`
 
-configuration file to import (if needed)
 
-Default value: $::harmony::param::import_file
+
+Default value: $::harmony::params::import_file
 
 ##### `import_password`
 
 Data type: `String`
 
-password for import configuration file
 
-Default value: $::harmony::param::import_password
+
+Default value: $::harmony::params::import_password
 
 ##### `cert_password`
 
 Data type: `String`
 
-password for certificates in import configuration file (assumed to be all the same)
 
-Default value: $::harmony::param::cert_password
+
+Default value: $::harmony::params::cert_password
 
 ##### `do_initial_config`
 
 Data type: `Boolean`
 
-Perform initial configuration (certificate set up and set up of listening ports etc)
 
-Default value: $::harmony::param::do_initial_config
+
+Default value: $::harmony::params::do_initial_config
 
 ##### `patch_file_name`
 
 Data type: `String`
 
-Name of the patch file to install
+
 
 Default value: "${patch_no}.zip"
 
@@ -246,7 +246,7 @@ Default value: "${patch_no}.zip"
 
 Data type: `String`
 
-Local location that installer is cached
+
 
 Default value: "/vagrant/installers/${installer_name}"
 
@@ -254,15 +254,15 @@ Default value: "/vagrant/installers/${installer_name}"
 
 Data type: `String`
 
-Local location that dashboard installer is cached
 
-Default value: "/vagrant/installers/${::harmony::param::dashboard_installer}"
+
+Default value: "/vagrant/installers/${::harmony::params::dashboard_installer}"
 
 ##### `patch_cache`
 
 Data type: `String`
 
-Local location that patches are cached
+
 
 Default value: "/vagrant/${patch_file_name}"
 
@@ -270,57 +270,57 @@ Default value: "/vagrant/${patch_file_name}"
 
 Data type: `String`
 
-S3 bucket where installers and patches are cached (to speed up aws installs)
 
-Default value: "${::harmony::param::s3_bucket}/${installer_name}"
+
+Default value: "${::harmony::params::s3_bucket}/${installer_name}"
 
 ##### `s3_dashboard_cache`
 
 Data type: `String`
 
-S3 location of dashboard installer
 
-Default value: "${::harmony::param::s3_bucket}/${::harmony::param::dashboard_installer}"
+
+Default value: "${::harmony::params::s3_bucket}/${::harmony::params::dashboard_installer}"
 
 ##### `s3_patch_cache`
 
 Data type: `String`
 
-S3 location of patch installer
 
-Default value: "${::harmony::param::s3_bucket}/${patch_file_name}"
+
+Default value: "${::harmony::params::s3_bucket}/${patch_file_name}"
 
 ##### `patch_download_url`
 
 Data type: `String`
 
-Base download URL for patches
 
-Default value: "http://www.cleo.com/Web_Install/PatchBase_${::harmony::param::patch_base}/harmony/${patch_no}/${patch_file_name}"
+
+Default value: "http://www.cleo.com/Web_Install/PatchBase_${::harmony::params::patch_base}/harmony/${patch_no}/${patch_file_name}"
 
 ##### `cluster`
 
 Data type: `Boolean`
 
-Should this Harmony be clustered
 
-Default value: $::harmony::param::cluster
+
+Default value: $::harmony::params::cluster
 
 ##### `cluster_ip`
 
 Data type: `String`
 
-IP address of other machine in the cluster
 
-Default value: $::harmony::param::cluster_ip
+
+Default value: $::harmony::params::cluster_ip
 
 ##### `cluster_license`
 
 Data type: `String`
 
-License serial number of other machine in the cluster
 
-Default value: $::harmony::param::cluster_license
+
+Default value: $::harmony::params::cluster_license
 
 
 ### harmony::config
@@ -346,9 +346,9 @@ include harmony::dashboard
 The harmony::install class.
 
 
-### harmony::param
+### harmony::params
 
-harmony::param
+harmony::params
 
 Paramater defaults for the harmony class
 
