@@ -1,6 +1,6 @@
 class harmony::install {
 
-    ensure_packages (['unzip', 'openssl', 'rng-tools', 'wget'],
+    ensure_packages (['unzip', 'openssl', 'rng-tools', 'wget', 'fontconfig'],
         { ensure => 'present', })
 
 # Are we setting up a new user to install Harmony under, or using an existing one?
